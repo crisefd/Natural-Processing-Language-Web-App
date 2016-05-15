@@ -1,10 +1,16 @@
 {% load staticfiles%}
 <!DOCTYPE html>
 <html lang="en">
-<head>
-	<meta charset="utf-8">
-</head>
-<body>
-<div>Hello world!</div>
-</body>
-<html>
+	<head>
+		<meta charset="utf-8">
+		<title>{% block title %}{% endblock %}</title>
+
+	</head>
+	<body>
+		<script src="{% static 'jquery/dist/jquery.js'%}"></script>
+		<script src="{% static 'angular/angular.js'%}"></script>
+		<script src="{% static 'bootstrap/dist/js/bootstrap.js'%}"></script>
+		<link href="{% static 'bootstrap/dist/css/bootstrap.css'%}" rel="stylesheet"/>
+		{% block content %}{% block content %}
+	</body>
+</html>
