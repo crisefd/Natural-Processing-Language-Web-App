@@ -20,5 +20,5 @@ from django.conf import settings
 
 urlpatterns = [
     url(r'^admin/', admin.site.urls),
-    url('r^', include('apps.freeling_app.urls', namespace='freeling')),
+    url(r'^', include('apps.freeling_app.urls', namespace='freeling')),
 ]
