@@ -10,7 +10,7 @@ LANGUAGE = 'es'
 
 freeling.util_init_locale('default')
 opt = freeling.maco_options(LANGUAGE)
-opt.set_active_modules(1,1,1,1,1,1,1,1,1,1,0)
+# opt.set_active_modules(1,1,1,1,1,1,1,1,1,1,0)
 opt.set_data_files("usermap.dat",
                                     DATA+LANGUAGE+"/locucions.dat", 
                                     DATA+LANGUAGE+"/quantities.dat", 
@@ -22,8 +22,9 @@ opt.set_data_files("usermap.dat",
                                     "")
 opt.set_retok_contractions(False)
 
-lg  = freeling.lang_ident(DATA+"common/lang_ident/ident-few.dat")
+lg  = freeling.lang_ident(DATA + "/common/lang_ident/ident-few.dat")
 mf  = freeling.maco(op)
+mf.set_active_options(1,1,1,1,1,1,1,1,1,1,0)
 tk  = freeling.tokenizer(DATA+LANGUAGE+"/tokenizer.dat")
 sp  = freeling.splitter(DATA+LANGUAGE+"/splitter.dat")
 tg  = freeling.hmm_tagger(DATA+LANGUAGE+"/tagger.dat",1,2)
