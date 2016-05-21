@@ -37,21 +37,19 @@ tokens = tokenizer.tokenize(phrase)
 splitted_phrase = splitter.split(sid, tokens, False)
 mf_analysis = morfo.analyze(splitted_phrase)
 mf_analysis = tagger.analyze(mf_analysis)
-mf_analysis = senses.analyze(mf_analysis)
 mf_analysis = parser.analyze(mf_analysis)
 # mf_analysis = depen.analyze(mf_analysis)
 for item in mf_analysis:
     words = item.get_words()
     for word in words:
-       # analysis = word.get_analysis()
+        print "-------------------------------------------------"
+        analysis = word.get_analysis()
         lemma = word.get_lemma()
-        sense = word.get_senses_string()
         tag = word.get_tag()
         form = word.get_form()
-        print  "form="+str(form)+" tag="+str(tag)+ " lemma=" + str(lemma) + " sense=" + str(sense) 
-# sp = freeling.splitter(DATA + LANGUAGE + '/splitter.dat')
+        print  "form="+str(form)+" tag="+str(tag)+ " lemma=" + str(lemma)
+        print "analysis: "
+        for an in analysis:
+            print "prob=" + str(an.get_prob()) + " tag=" + str(an.get_tag())
 
-# language = freeling.lang_ident(DATA + 'common/lang_ident/ident.dat')
-# output = language.identify_language('Esta es una entrada a la que se le va a detectar el idioma', [])
-# print output
 
