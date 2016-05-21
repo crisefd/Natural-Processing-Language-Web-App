@@ -33,8 +33,10 @@ morfo.set_active_options(False, True, True, True,  # select which among created
 
 
 phrase = 'El gato come pescado. Pero a Don Jaime no le gustan los gatos.'
+#phrase = 'Hola mundo'
 tokens = tokenizer.tokenize(phrase)
 splitted_phrase = splitter.split(sid, tokens, False)
+print "splitted_phrase =", splitted_phrase
 mf_analysis = morfo.analyze(splitted_phrase)
 mf_analysis = tagger.analyze(mf_analysis)
 mf_analysis = parser.analyze(mf_analysis)

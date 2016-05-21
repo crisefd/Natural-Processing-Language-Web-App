@@ -4,7 +4,6 @@
 		["$http", "$scope",
 		function($http, $scope){
 			$scope.inputText = "";
-			alert("Initializing controlller");
 			$scope.submitText = function(){
 				console.log("input text = " + $scope.inputText);
 				console.log("sending request to server ");
@@ -16,7 +15,7 @@
 					'Content-Type': 'application/x-www-form-urlencoded; charset=UTF-8'
 					    }
 				}).success(function(response){
-					console.log('success');
+					console.log('success' + JSON.stringify(response));
 				}).error(function(error){
 					console.log('error');
 				});
