@@ -2,12 +2,12 @@
 {% load staticfiles %}
 {% block title %}Freeling App{% endblock %}
 {% block content%}
-	<div class="freeling-app" ng-app="FreelingApp">
+	<div class="freeling-app" ng-app="freelingApp">
 		<div class='header'>
 			Freeling App
 		</div>
-		<form ng-controller="MFController">
-			<div class="form-group">{% csrf_token %}
+		<form ng-controller="MAController" >
+			<div class="form-group">
 			      	 <label>Input text:</label>
 		                 <textarea class="form-control" rows="7" ng-model="inputText"></textarea>
 			</div>

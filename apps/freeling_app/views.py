@@ -3,6 +3,7 @@ from django.template import Template, Context
 from django.http import JsonResponse
 import freeling
 from freeling_variables import *
+from django.views.decorators.csrf import csrf_exempt
 
 def morphological_analysis(text):
     analyzed_lines = []
@@ -27,15 +28,17 @@ def morphological_analysis(text):
         analyzed_lines.append(dict_)
     return analyzed_lines
 
+@csrf_exempt
 def freeling_view(request):
-    output = ''
+    output = {}
+    print "==> request received in server"
     if request.method == 'POST':
         try:
-            text = str(request['POST'])
-            output = morphological_analysis(text)
+            text = str(request.POST['text'])
+            output['data'] = morphological_analysis(text)
         except Exception as err:
-            output = 'Bad parameters ' + str(err)
-
+            output['data'] = 'Bad parameters ' + str(err)
+    print "==> response sent to client"
     return JsonResponse(output)
 
 def home_view(request):

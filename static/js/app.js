@@ -1,17 +1,25 @@
 (function(){
-	var app = angular.module('FreelingApp', []);
-	app.controller('MFController', ['$http','$scope',function($http, $scope){
-		$scope.inputText = '';
-		$scope.submitText = function(){
-			$http.post('morfo_analysis/', $scope.inputText)
-				.then(
-					function(response){
-						console.log(response);
-					},
-					function(error){
-						console.log(error);
-					}
-				);
-		};
-	}]);
+	var app = angular.module("freelingApp", ["ngRoute"]);
+	app.controller("MAController", 
+		["$http", "$scope",
+		function($http, $scope){
+			$scope.inputText = "";
+			alert("Initializing controlller");
+			$scope.submitText = function(){
+				console.log("input text = " + $scope.inputText);
+				console.log("sending request to server ");
+				$http({
+					method: "POST",
+					url: "http://localhost:8000/morpho_analysis/",
+					data: "text=" + $scope.inputText,
+					headers: {
+					'Content-Type': 'application/x-www-form-urlencoded; charset=UTF-8'
+					    }
+				}).success(function(response){
+					console.log('success');
+				}).error(function(error){
+					console.log('error');
+				});
+			};
+		}]);
 })();
