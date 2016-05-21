@@ -7,10 +7,13 @@
 
 	</head>
 	<body>
-		<script src="{% static 'jquery/dist/jquery.js'%}"></script>
-		<script src="{% static 'angular/angular.js'%}"></script>
-		<script src="{% static 'bootstrap/dist/js/bootstrap.js'%}"></script>
-		<link href="{% static 'bootstrap/dist/css/bootstrap.css'%}" rel="stylesheet"/>
+		<script src="{% static 'jquery/dist/jquery.min.js' %}"></script>
+		<script src="{% static 'angular/angular.min.js' %}"></script>
+		<script src="{% static 'bootstrap/dist/js/bootstrap.min.js' %}"></script>
+		<script src="{% static 'less/dist/less-1.7.0.min.js' %}"></script>
+		<script src="{% static 'js/app.js' %}"></script>
+		<link href="{% static 'bootstrap/dist/css/bootstrap.min.css' %}" rel="stylesheet"/>
+		<link href="{% static 'css/styles.css' %}" rel="stylesheet"/>
 		{% block content %}{% endblock %}
 	</body>
 </html>

@@ -1,0 +1,15 @@
+.freeling-app {
+  padding: 10px;
+}
+.freeling-app .header {
+  background: #777;
+  color: #fff;
+  font-size: 24pt;
+  height: 60px;
+  padding-top: 1rem;
+  text-align: center;
+  width: 100%;
+}
+.freeling-app .form-control {
+  width: 60%;
+}

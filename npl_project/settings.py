@@ -26,7 +26,20 @@ INSTALLED_APPS = [
     'django.contrib.messages',
     'django.contrib.staticfiles',
     'apps.freeling_app',
+    'compressor',
 ]
+
+STATICFILES_FINDERS = (
+        'django.contrib.staticfiles.finders.FileSystemFinder',
+        'django.contrib.staticfiles.finders.AppDirectoriesFinder',
+        'compressor.finders.CompressorFinder',
+)
+
+COMPRESS_PRECOMPILERS = (
+       ('text/less', 'lessc {infile} {outfile}'),
+)
+
+INTERNAL_IP = ('127.0.0.1',)
 
 MIDDLEWARE_CLASSES = [
     'django.middleware.security.SecurityMiddleware',
@@ -108,7 +121,7 @@ USE_TZ = True
 # Static files (CSS, JavaScript, Images)
 # https://docs.djangoproject.com/en/1.9/howto/static-files/
 
-
+STATIC_ROOT = '/static_media/'
 
 STATIC_URL = '/static/'
 STATICFILES_DIRS = (BASE_DIR, 'static')
