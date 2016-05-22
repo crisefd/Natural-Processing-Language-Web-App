@@ -17,24 +17,27 @@
 	</div>
 
 	<div class="table-container" ng-if="isThereAnyData()">
-		<pre>{[{data}]}</pre>
-    	<!--	<table cellspacing="20">
-			<tr>
-				<td ng-repeat="item in data"class="col-md-3">
-					<span class="form">{{item.form}}</span>
+		<!--	<pre>{[{data}]}</pre>-->
+		<hr>
+    		<table cellspacing="20" >
+			<tr ng-repeat="sentence in data">
+				<td ng-repeat="word in sentence"class="col-md-3">
+					<span class="form">Form:{[{word.form}]}</span>
 					<br>
 					<hr>
-					<span class="lemma">{{item.lemma}}</span>
+					<span class="lemma">Lemma:{[{word.lemma}]}</span>
 					<br>
-					<div ng-repeat="e in item.analysis">
-						<span class="tag">{{e.tag}}</span>
+					<hr>
+					<!--<div ng-repeat="an in word.analysis">
+						<span class="tag">{[{an.tag}]}</span>
 						<br>
-						<span class="prob">{{e.prob}}</span>
+						<span class="prob">{[{an.prob}]}</span>
 						<hr>
-					</div>
+					</div>-->
 				</td>
 			</tr>
-		</table>-->
+			</td>
+		</table>
 
 	</div>
 
