@@ -2,11 +2,11 @@
 {% load staticfiles %}
 {% block title %}Freeling App{% endblock %}
 {% block content%}
-	<div class="freeling-app" ng-app="freelingApp">
+	<div>
 		<div class='header'>
 			Freeling App
 		</div>
-		<form ng-controller="MAController" >
+		<form>
 			<div class="form-group">
 			      	 <label>Input text:</label>
 		                 <textarea class="form-control" rows="7" ng-model="inputText"></textarea>
@@ -14,4 +14,8 @@
 			<button type="submit" class="btn btn-primary" ng-click="submitText()">Submit</button>
 		</form>
 	</div>
+	<div>
+		<data-table></data-table>
+	</div>
+	Mundo
 {% endblock %}

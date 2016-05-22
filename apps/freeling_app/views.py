@@ -23,18 +23,21 @@ def morphological_analysis(text):
     #print "mf_analysis size is " + str(len(mf_analysis))
     for item in mf_analysis:
         words = item.get_words()
-        dict_ = {}
+        list_ = []
+        k = 0
         for word in words:
-            dict_[str(word.get_form())] = {
+            list_.append( {
                 'lemma': str(word.get_lemma()),
                 'tag': str(word.get_tag()),
                 'analysis': [],
-            }
+                'form': str(word.get_form())
+            })
             word_analysis = word.get_analysis()
             for an in word_analysis:
-                dict_[word.get_form()]['analysis'].append({'tag': str(an.get_tag()),
-                                                           'prob': an.get_prob()})
-        analyzed_lines.append(dict_)
+                list_[k]['analysis'].append({'tag': str(an.get_tag()),
+                                             'prob': an.get_prob()})
+            k += 1
+        analyzed_lines.append(list_)
     print "analyzed lines =", analyzed_lines
     return analyzed_lines
 
