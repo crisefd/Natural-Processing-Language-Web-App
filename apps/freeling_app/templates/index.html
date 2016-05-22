@@ -18,22 +18,21 @@
 
 	<div class="table-container" ng-if="isThereAnyData()">
 		<!--	<pre>{[{data}]}</pre>-->
-		<hr>
     		<table cellspacing="20" >
 			<tr ng-repeat="sentence in data">
 				<td ng-repeat="word in sentence"class="col-md-3">
-					<span class="form">Form:{[{word.form}]}</span>
+					<span class="form">Form: {[{word.form}]}</span>
 					<br>
 					<hr>
-					<span class="lemma">Lemma:{[{word.lemma}]}</span>
+					<span class="lemma">Lemma: {[{word.lemma}]}</span>
 					<br>
 					<hr>
-					<!--<div ng-repeat="an in word.analysis">
-						<span class="tag">{[{an.tag}]}</span>
+					<div ng-repeat="an in word.analysis">
+						<span class="tag">Tag: {[{an.tag}]}</span>
 						<br>
-						<span class="prob">{[{an.prob}]}</span>
+						<span class="prob">Prob: {[{an.prob}]}</span>
 						<hr>
-					</div>-->
+					</div>
 				</td>
 			</tr>
 			</td>
