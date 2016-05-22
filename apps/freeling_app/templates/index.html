@@ -12,10 +12,30 @@
 		                 <textarea class="form-control" rows="7" ng-model="inputText"></textarea>
 			</div>
 			<button type="submit" class="btn btn-primary" ng-click="submitText()">Submit</button>
+
 		</form>
 	</div>
-	<div>
-		<data-table></data-table>
+
+	<div class="table-container" ng-if="isThereAnyData()">
+		<pre>{[{data}]}</pre>
+    	<!--	<table cellspacing="20">
+			<tr>
+				<td ng-repeat="item in data"class="col-md-3">
+					<span class="form">{{item.form}}</span>
+					<br>
+					<hr>
+					<span class="lemma">{{item.lemma}}</span>
+					<br>
+					<div ng-repeat="e in item.analysis">
+						<span class="tag">{{e.tag}}</span>
+						<br>
+						<span class="prob">{{e.prob}}</span>
+						<hr>
+					</div>
+				</td>
+			</tr>
+		</table>-->
+
 	</div>
-	Mundo
+
 {% endblock %}
