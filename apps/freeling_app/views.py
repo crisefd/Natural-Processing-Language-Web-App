@@ -48,13 +48,18 @@ def morphological_analysis(text):
 
 def lemmatized(lines_forms, analyzed_lines):
     command = 'Rscript'
-    path_to_script = 'helpers/script.r'
+    path_to_script = '/srv/npl_project/apps/freeling_app/helpers/script.r'
     k = 0
+    print "len analyzed_lines ", len(analyzed_lines)
     for line in lines_forms:
         cmd = [command, path_to_script] + line
-        line_lemma = subprocess.check_output(cmd, universal_newlines=True)
+        print "CMD: ", cmd
+        line_lemma = subprocess.check_output(cmd, universal_newlines=True).split(',')
+        print "line lemma ", line_lemma
+        print "line ", k
         j = 0
         for lemma in line_lemma:
+            print "lemma ", j
             analyzed_lines[k][j]['lemma'] = str(lemma)
             j += 1
         k += 1
@@ -84,7 +89,8 @@ def freeling_view(request):
             output['data'] = analyzed_lines
             print "adding data"
         except Exception as err:
-            output['data'] = 'Bad parameters ' + str(err)
+            print("Error: "+ str(err))
+            output['data'] = 'Error ' + str(err)
     print "==> response sent to client"
     return JsonResponse(output)
 

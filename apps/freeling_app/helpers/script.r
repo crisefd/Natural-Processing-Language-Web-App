@@ -12,4 +12,4 @@ for(i in 1:length(myArgs))
 }
 
 # cat will write the result to the stdout stream
-cat(usq)
+cat(toString(usq))
