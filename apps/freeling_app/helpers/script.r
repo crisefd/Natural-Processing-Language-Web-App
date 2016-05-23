@@ -1,6 +1,6 @@
 # max.R
 require(stats)
-source("/home/fabianact/pln_project/mf_test/lematizador.r")
+source("/srv/npl_project/apps/freeling_app/helpers/lematizador.r")
 # Fetch command line arguments
 myArgs <- commandArgs(trailingOnly = TRUE)
 
