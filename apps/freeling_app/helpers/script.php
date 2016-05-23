@@ -1,5 +1,5 @@
 <?php
-require_once 'stemm_es.php';
+require_once '/srv/npl_project/apps/freeling_app/helpers/stemm_es.php';
 array_shift($argv);
 $request = array();
 foreach ($argv as $arg) {

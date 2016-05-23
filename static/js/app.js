@@ -18,6 +18,7 @@
 				return true;
 			};
 			$scope.submitText = function(){
+				$scope.data = [];
 				console.log("input text = " + $scope.inputText);
 				console.log("sending request to server ");
 				$http({

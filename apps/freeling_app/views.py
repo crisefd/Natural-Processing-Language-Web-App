@@ -33,7 +33,8 @@ def morphological_analysis(text):
                 'lemma': '',
                 'tag': str(word.get_tag()),
                 'analysis': [],
-                'form': str(word.get_form())
+                'form': str(word.get_form()),
+                'stemm': ''
             })
             line_forms.append(str(word.get_form()))
             word_analysis = word.get_analysis()
@@ -64,14 +65,19 @@ def lemmatized(lines_forms, analyzed_lines):
             j += 1
         k += 1
 
+def stemming(lines_forms, analyzed_lines):
+    command = 'php'
+    path_to_script = '/srv/npl_project/apps/freeling_app/helpers/script.php'
+    k = 0
+    for line in lines_forms:
+        cmd = [command, path_to_script] + line
+        line_stemm = subprocess.check_output(cmd, universal_newlines=True).split()
+        j = 0
+        for stemm in line_stemm:
+            analyzed_lines[k][j]['stemm'] = str(stemm)
+            j += 1
+        k += 1
 
-
-def create_lines_forms(analyzed_lines):
-    lines_forms = []
-    for line in analyzed_lines:
-        for dic in line:
-            lines_forms.append(dic['form'])
-    return lines_forms
 
 @csrf_exempt
 def freeling_view(request):
@@ -86,6 +92,8 @@ def freeling_view(request):
             print "morpho analysis"
             lemmatized(lines_forms, analyzed_lines)
             print "lemmatized"
+            stemming(lines_forms, analyzed_lines)
+            print "stemming"
             output['data'] = analyzed_lines
             print "adding data"
         except Exception as err:
