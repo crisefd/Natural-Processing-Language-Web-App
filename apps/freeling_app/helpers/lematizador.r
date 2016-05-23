@@ -7,20 +7,15 @@ close(f)
 require(fastmatch)
 require(XML) # to use Grampal # install.packages("XML") # sudo apt-get install libxml2-dev 
 
-lematizador <- function(word,
-			                        all.words = FALSE,
-						                        commonwords =  spcommonwords,
-									                        dictionary = spdictionary,
-												                        morphemes = spmorphemes,
-															                        ...) {
+lematizador <- function(word, all.words = FALSE, commonwords =  spcommonwords, dictionary = spdictionary, morphemes = spmorphemes, ...) {
 
-	  word <- tolower(as.character(word))
+  word <- tolower(as.character(word))
   getcanonicalword <- function(words, database, all.words = FALSE ) {
-	      pos <- fmatch(words, database$word )
-      pos <- pos[!is.na(pos)]
-          if( all.words ) database$canonical[pos]
+	pos <- fmatch(words, database$word )
+        pos <- pos[!is.na(pos)]
+        if( all.words ) database$canonical[pos]
           else database$canonical[ pos[1] ]
-	    }
+	}
     
     ## Is it a spanish common word?
     canonical <-  getcanonicalword(word, commonwords, all.words)
@@ -37,22 +32,22 @@ lematizador <- function(word,
         ## Divide the word into root+desinence
         nch <- nchar(word)
         listroots <- lapply(1:(nch-1), function(i, word, nch) {
-			        root <- substring(word,1,i)
-				    desinence <- substring(word,i+1,nch)
-				    c(root, desinence)
-				      }, word,nch)
+			root <- substring(word,1,i)
+		        desinence <- substring(word,i+1,nch)
+		        c(root, desinence)
+		}, word,nch)
 	  listroots <- as.data.frame(do.call(rbind, listroots))
 	  names(listroots) <- c("root","desinence")
 
-	    getderivational <- function(x, mylist) {
-		        pos <- fmatch(x, names(mylist))
-	      tmp <- mylist[[pos]]
+       getderivational <- function(x, mylist) {
+	 pos <- fmatch(x, names(mylist))
+	 tmp <- mylist[[pos]]
 	          if(is.null(tmp) ) {NA}
 	          else {tmp}
-		    }
+         }
 
-	    ## Get the derivational morphemes that correspond to each desinence
-	    derivational <- lapply(as.character(listroots$desinence), getderivational , spmorphemes)
+	   ## Get the derivational morphemes that correspond to each desinence
+	   derivational <- lapply(as.character(listroots$desinence), getderivational , spmorphemes)
 	      names(derivational) <- listroots$root
 	        
 	      ## Build the possible words: root + derivational morphemes
@@ -70,16 +65,15 @@ lematizador <- function(word,
 
 
 lematizadorGRAMPAL <- function(word) {
-	  
-	  cambiaracentos <- function(jj){ ## FALTA Ü
-		      jj <- gsub("Ã\\u0081","Á", jj, fixed=TRUE)
-    jj <- gsub("Ã\\u0089","É", jj, fixed=TRUE)
+	cambiaracentos <- function(jj){ ## FALTA Ü
+	jj <- gsub("Ã\\u0081","Á", jj, fixed=TRUE)
+        jj <- gsub("Ã\\u0089","É", jj, fixed=TRUE)
         jj <- gsub("Ã\\u008d","Í", jj, fixed=TRUE)
         jj <- gsub("Ã\\u0093","Ó", jj, fixed=TRUE)
-	    jj <- gsub("Ã\\u009a","Ú", jj, fixed=TRUE)
-	    jj <- gsub("Ã\\u0091","Ñ", jj, fixed=TRUE)
-	        jj
-	      }
+	jj <- gsub("Ã\\u009a","Ú", jj, fixed=TRUE)
+	jj <- gsub("Ã\\u0091","Ñ", jj, fixed=TRUE)
+	jj
+}
   
     lematiza <- function( frase ){
 	      ## Borrowed from
