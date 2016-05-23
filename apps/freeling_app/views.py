@@ -2,7 +2,7 @@ from django.shortcuts import render
 from django.template import Template, Context
 from django.http import JsonResponse
 import freeling
-from freeling_variables import *
+from helpers.freeling_variables import *
 from django.views.decorators.csrf import csrf_exempt
 
 def morphological_analysis(text):
