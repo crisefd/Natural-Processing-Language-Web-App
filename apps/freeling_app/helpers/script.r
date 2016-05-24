@@ -1,6 +1,7 @@
 # max.R
 require(stats)
-source("/srv/npl_project/apps/freeling_app/helpers/lematizador.r")
+path = paste(getwd(), "/apps/freeling_app/helpers/lematizador.r", sep="")
+source(path)
 # Fetch command line arguments
 myArgs <- commandArgs(trailingOnly = TRUE)
 

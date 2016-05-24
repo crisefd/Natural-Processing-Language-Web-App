@@ -1,5 +1,6 @@
 <?php
-require_once '/srv/npl_project/apps/freeling_app/helpers/stemm_es.php';
+$path = getcwd() . '/apps/freeling_app/helpers/stemm_es.php';
+require_once($path);
 array_shift($argv);
 $request = array();
 foreach ($argv as $arg) {
