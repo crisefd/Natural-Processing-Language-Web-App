@@ -39,7 +39,7 @@
 ### Installation of NPM and Bower package managers
 
 - Install the NodeJS framework
-- 
+
 `$ curl -sL https://deb.nodesource.com/setup_4.x | sudo -E bash -`
 `$ sudo aptitude install -y nodejs`
 
