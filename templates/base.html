@@ -3,26 +3,27 @@
 <html ng-app="freelingApp">
 	<head>
 		<meta charset="utf-8">
-		<title>{% block title %}{% endblock %}</title>	
-		<script src="{% static 'jquery/dist/jquery.min.js' %}"></script>	
+		<title>{% block title %}{% endblock %}</title>
+		<script src="{% static 'jquery/dist/jquery.min.js' %}"></script>
 		<script src="{% static 'angular/angular.min.js' %}"></script>
-		<script src="{% static 'angular-route/angular-route.min.js' %}"></script>
-		<script src="{% static 'js/app.js' %}"></script>
 		<script src="{% static 'bootstrap/dist/js/bootstrap.min.js' %}"></script>
 		<link href="{% static 'bootstrap/dist/css/bootstrap.min.css' %}" rel="stylesheet"/>
-       		<script src="{% static 'less/dist/less-1.7.0.min.js' %}"></script> 
+		<script src="{% static 'angular-route/angular-route.min.js' %}"></script>
+		<script src="{% static 'angular-bootstrap/ui-bootstrap-tpls.min.js' %}"></script>
+		<script src="{% static 'js/app.js' %}"></script>
+    <script src="{% static 'less/dist/less-1.7.0.min.js' %}"></script>
 		<link href="{% static 'css/styles.css' %}" rel="stylesheet"/>
-	
+
 	</head>
-                 	
+
 	<body ng-controller="MainController" class="freeling-app">
-	<!--	<script src="{% static 'jquery/dist/jquery.min.js' %}"></script>        
+	<!--	<script src="{% static 'jquery/dist/jquery.min.js' %}"></script>
 		<script src="{% static 'angular/angular.min.js' %}"></script>
 	       	<script src="{% static 'angular-route/angular-route.min.js' %}"></script>
 	       	<script src="{% static 'js/app.js' %}"></script>
 	        <script src="{% static 'bootstrap/dist/js/bootstrap.min.js' %}"></script>
 	        <link href="{% static 'bootstrap/dist/css/bootstrap.min.css' %}" rel="stylesheet"/>
-	        <script src="{% static 'less/dist/less-1.7.0.min.js' %}"></script> 
+	        <script src="{% static 'less/dist/less-1.7.0.min.js' %}"></script>
 		<link href="{% static 'css/styles.css' %}" rel="stylesheet"/>-->
 
 		{% block content %}{% endblock %}

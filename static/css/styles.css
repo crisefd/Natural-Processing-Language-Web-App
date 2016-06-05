@@ -16,7 +16,15 @@
 .freeling-app .table-container {
   padding: 10px;
   width: 60%;
+  border-collapse: collapse;
+  table-layout: fixed;
+  empty-cells: show;
+  height: 600px;
+  overflow-y: scroll;
+  overflow-x: scroll;
 }
 .freeling-app .table-container td {
+  border-top: 0;
+  border-bottom: 0;
   border: 2px solid gray;
 }

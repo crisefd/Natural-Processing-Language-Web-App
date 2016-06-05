@@ -5,24 +5,16 @@ import freeling
 from helpers.freeling_variables import *
 from django.views.decorators.csrf import csrf_exempt
 import subprocess
+import os
 
 def morphological_analysis(text):
     analyzed_lines = []
     lines_forms = []
-    #print "tokenizer =", tokenizer
-    #print "splitter = ", splitter
-    #print "morfo = ", morfo
-    #print "tagger = ", tagger
-    #print "parser = ", parser
-    #print "sid = ", sid
     tokens = tokenizer.tokenize(text)
-    #print "tokens size = ", len(tokens)
     splitted_text = splitter.split(sid, tokens, False)
-    #print "splitted text = ", splitted_text
     mf_analysis = morfo.analyze(splitted_text)
     mf_analysis = tagger.analyze(mf_analysis)
     mf_analysis = parser.analyze(mf_analysis)
-    #print "mf_analysis size is " + str(len(mf_analysis))
     for item in mf_analysis:
         words = item.get_words()
         list_ = []
@@ -44,12 +36,12 @@ def morphological_analysis(text):
             k += 1
         lines_forms.append(line_forms)
         analyzed_lines.append(list_)
-    # print "analyzed lines =", analyzed_lines
     return (lines_forms, analyzed_lines)
 
 def lemmatized(lines_forms, analyzed_lines):
     command = 'Rscript'
-    path_to_script = '/srv/npl_project/apps/freeling_app/helpers/script.r'
+    path_to_script = os.getcwd() + '/apps/freeling_app/helpers/script.r'
+    # path_to_script = '/srv/npl_project/apps/freeling_app/helpers/script.r'
     k = 0
     print "len analyzed_lines ", len(analyzed_lines)
     for line in lines_forms:
@@ -67,7 +59,8 @@ def lemmatized(lines_forms, analyzed_lines):
 
 def stemming(lines_forms, analyzed_lines):
     command = 'php'
-    path_to_script = '/srv/npl_project/apps/freeling_app/helpers/script.php'
+    path_to_script = os.getcwd() + '/apps/freeling_app/helpers/script.php'
+    # path_to_script = '/srv/npl_project/apps/freeling_app/helpers/script.php'
     k = 0
     for line in lines_forms:
         cmd = [command, path_to_script] + line
