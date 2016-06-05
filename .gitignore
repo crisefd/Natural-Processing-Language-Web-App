@@ -5,6 +5,7 @@ node_modules
 static/angular
 static/angular-route
 static/bootstrap
+static/angular-bootstrap
 static/jquery
 static/less
 static_media
