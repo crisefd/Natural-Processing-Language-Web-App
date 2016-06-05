@@ -47,9 +47,19 @@
 
 `$ npm install -g bower`
 
+### Install django and virtualenv
+
+`$ pip install virtualenv`
+
+`$ virtualenv env`
+
+`$ source env/bin/activate`
+
+`$ pip install -r npl_project/requirements.txt`
 ### Install the required front-end libraries
 
 `$ bower install`
+
 
 ## Running the App in localhost
 
