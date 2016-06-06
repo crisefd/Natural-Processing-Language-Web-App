@@ -2,7 +2,7 @@ import freeling
 # code extracted from https://gist.github.com/arademaker/dffb8de093502b153e85#file-processing-py-L50
 FREELINGDIR = '/usr/local'
 DATA = FREELINGDIR + '/share/freeling/'
-LANGUAGE = 'es'
+LANGUAGE = 'en'
 
 freeling.util_init_locale('default')
 option = freeling.maco_options(LANGUAGE)

@@ -83,10 +83,10 @@ def freeling_view(request):
             print 'the text is ' + text
             lines_forms, analyzed_lines = morphological_analysis(text)
             print "morpho analysis"
-            lemmatized(lines_forms, analyzed_lines)
-            print "lemmatized"
-            stemming(lines_forms, analyzed_lines)
-            print "stemming"
+            #lemmatized(lines_forms, analyzed_lines)
+            #print "lemmatized"
+            #stemming(lines_forms, analyzed_lines)
+            #print "stemming"
             output['data'] = analyzed_lines
             print "adding data"
         except Exception as err:
