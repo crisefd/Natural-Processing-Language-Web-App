@@ -21,25 +21,11 @@
                 return true;
             };
 
-            var tagToWord = function(category, tag){
-              var adjetivoDic = {
-                Q: "Calificativo",
-                O: "Ordinal",
-                A: "Aumentativo",
-                D: "Diminutivo",
-                C: "Comparativo",
-                S: "Superlativo",
-                M: "Masculino",
-                F: "Femenino",
-                C:
-              }
-            }
-
             var eaglesAnalysis = function(tag){
               var analysis = "";
               switch (tag[0]) {
                 case "A":
-                analysis += "Adjetivo\n"
+                analysis += "Adjetivo\n";
                 for(var i = 1; i < tag.length; i++){
                   switch (i) {
                     case 1:
@@ -64,7 +50,7 @@
 
                         case "S":
                           analysis += "Superlativo\n";
-                          break
+                          break;
                       }
                     break;
                     case 3:
@@ -97,10 +83,10 @@
                   case 5:
                     switch (tag[i]) {
                       case "0":
-                        analysis += "-\n"
+                        analysis += "-\n";
                         break;
                       case "P":
-                        analysis += "Participio\n"
+                        analysis += "Participio\n";
                         break;
                     }
                   break;
@@ -546,11 +532,11 @@
                   analysis += "Fecha/Hora\n";
                 break; //fechas y horas
               }
+              return analysis;
             };
 
-            $scope.showEagleDetails = function(eagleCode) {
-                // eagle mapping here
-                console.log(eagleCode);
+            $scope.showEaglesDetails = function(eaglesCode) {
+                $scope.modalMsg = eaglesAnalysis(eaglesCode);
                 $scope.eagleModal = $uibModal.open({
                     template: '<div class="modal-header" ng-mouseleave="close()"><h3 class="modal-title">Message</h3></div><div class="modal-body">{[{message}]}</div><div class="modal-footer" ng-click="close()">Close</div>',
                     controller: 'modalController',
