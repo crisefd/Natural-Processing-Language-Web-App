@@ -6,12 +6,12 @@ LANGUAGE = 'es'
 
 freeling.util_init_locale('default')
 option = freeling.maco_options(LANGUAGE)
-option.set_data_files( "", 
+option.set_data_files( "",
                        DATA + "common/punct.dat",
                        DATA + LANGUAGE + "/dicc.src",
                        DATA + LANGUAGE + "/afixos.dat",
                        "",
-                       DATA + LANGUAGE + "/locucions.dat", 
+                       DATA + LANGUAGE + "/locucions.dat",
                        DATA + LANGUAGE + "/np.dat",
                        DATA + LANGUAGE + "/quantities.dat",
                        DATA + LANGUAGE + "/probabilitats.dat")
