@@ -96,4 +96,4 @@ def analysis_view(request):
     return JsonResponse(output)
 
 def morpho_ana_view(request):
-    return render(request, 'index.html')
+    return render(request, 'index_morpho.html')

@@ -8,7 +8,6 @@ def pos(txt):
     return st.tag(txt.split())
 
 def to_bikel_format(input_array):
-    # input_array = map(lambda tup: '(' + tup[1] + ')', input_array)
     bikel_txt = "("
     for item in input_array:
         item_1 = "(" + item[1] + ")"

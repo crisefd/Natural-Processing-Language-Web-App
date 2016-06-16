@@ -6,8 +6,6 @@
     app.controller("MainController", ["$http", "$scope", "$uibModal", "$log",
 
         function($http, $scope, $uibModal, $log) {
-
-
             $scope.inputText = "";
             $scope.modalMsg = "Message";
             $scope.data = [];
@@ -547,13 +545,21 @@
                     }
                 });
             };
-            $scope.submitText = function() {
+            $scope.submitText = function(app_name) {
                 $scope.data = [];
                 console.log("input text = " + $scope.inputText);
                 console.log("sending request to server ");
+                var url;
+                if(app_name === "morpho_app"){
+                  url = "http://localhost:8000/get_morphological_analysis/"
+                }else{
+                  if(app_name === "syntactic_app"){
+                    url = "http://localhost:8000/get_syntactic_analysis/"
+                  }
+                }
                 $http({
                     method: "POST",
-                    url: "http://localhost:8000/morpho_analysis/",
+                    url: url,
                     data: "text=" + $scope.inputText,
                     headers: {
                         'Content-Type': 'application/x-www-form-urlencoded; charset=UTF-8'
