@@ -3,6 +3,7 @@ from django.template import Template, Context
 from django.http import JsonResponse
 from django.conf import settings
 from helpers.stanford_variables import *
+from helpers.parseval import parseval
 from django.views.decorators.csrf import csrf_exempt
 import os
 
@@ -39,7 +40,10 @@ def analysis_view(request):
             print "bikel formatted text"
             print_to_file(bikel_txt, name='bikel-pos.txt')
             dan_bikel_parser()
-            print "adding data"
+            parse_eval_output = parseval(settings.BASE_DIR + '/syn_ana_files/bikel-pos.txt.parsed',
+                                         settings.BASE_DIR + '/static/wsj/wsj_0001', [])
+
+            print "parse evalution"
         except Exception as err:
             print "Error: "+ str(err)
             output['data'] = 'Error ' + str(err)
