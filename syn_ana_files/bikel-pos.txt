@@ -1,0 +1,1 @@
+((The (DT))(cat (NN))(eats (VBZ))(food. (NN))(But, (NN))(James (NNP))(is (VBZ))(not (RB))(a (DT))(cat. (NN)))
