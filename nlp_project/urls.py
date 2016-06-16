@@ -5,5 +5,6 @@ from django.conf import settings
 
 urlpatterns = [
     url(r'^admin/', admin.site.urls),
-    url(r'^', include('apps.freeling_app.urls', namespace='freeling')),
+    url(r'^', include('apps.morpho_app.urls', namespace='morpho_app_urls')),
+    url(r'^', include('apps.syntactic_app.urls', namespace="syntactic_app_urls")),
 ]

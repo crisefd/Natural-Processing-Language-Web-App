@@ -25,7 +25,7 @@ INSTALLED_APPS = [
     'django.contrib.sessions',
     'django.contrib.messages',
     'django.contrib.staticfiles',
-    'apps.freeling_app',
+    'apps.morpho_app',
     'compressor',
 ]
 
@@ -52,7 +52,7 @@ MIDDLEWARE_CLASSES = [
     'django.middleware.clickjacking.XFrameOptionsMiddleware',
 ]
 
-ROOT_URLCONF = 'npl_project.urls'
+ROOT_URLCONF = 'nlp_project.urls'
 
 TEMPLATES = [
     {
@@ -70,7 +70,7 @@ TEMPLATES = [
     },
 ]
 
-WSGI_APPLICATION = 'npl_project.wsgi.application'
+WSGI_APPLICATION = 'nlp_project.wsgi.application'
 
 
 # Database
