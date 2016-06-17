@@ -6,7 +6,7 @@ import per1
 #from subprocess import Popen, PIPE
 #import subprocess
 
-def parseval(files1, files2, argv):
+def parseval(files1, files2, argv=[]):
             ########## Execution starts here ##########
 
             startTag = '('
