@@ -41,7 +41,7 @@ def analysis_view(request):
             print_to_file(bikel_txt, name='bikel-pos.txt')
             dan_bikel_parser()
             parse_eval_output = parseval(settings.BASE_DIR + '/syn_ana_files/bikel-pos.txt.parsed',
-                                         settings.BASE_DIR + '/static/wsj/wsj_0001.mrg')
+                                         settings.BASE_DIR + '/static/wsj/gold_standard_tree/wsj_0001.mrg')
 
             print "parse evaluation"
         except Exception as err:

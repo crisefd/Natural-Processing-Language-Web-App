@@ -25,7 +25,7 @@ INSTALLED_APPS = [
     'django.contrib.sessions',
     'django.contrib.messages',
     'django.contrib.staticfiles',
-    'apps.morpho_app',
+    #'apps.morpho_app',
     'apps.syntactic_app',
     'compressor',
 ]
