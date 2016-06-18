@@ -2,16 +2,26 @@
 {% load staticfiles %}
 {%block title%}SYNTATIC ANALYSIS{% endblock %}
 {% block content %}
-<div>
-  <div class='header'>
-    Syntatic Analysis App
-  </div>
-  <form>
-    <div class="form-group">
-             <label>Input text:</label>
-             <textarea class="form-control" rows="7" ng-model="inputText"></textarea>
+    <div>
+        <div class='header'>
+            Syntatic Analysis App
+        </div>
+        <form name="myForm">
+            <label>
+                <input type="radio" ng-model="analyzer"  value="Bikel">
+                Bikel
+            </label><br/>
+            <label>
+                <input type="radio" ng-model="analyzer" ng-value="Stanford">
+                Stanford
+            </label><br/>
+        </form>
+        <form>
+            <div class="form-group">
+                <label>Input text:</label>
+                <textarea class="form-control" rows="7" ng-model="inputText"></textarea>
+            </div>
+            <button type="submit" class="btn btn-primary" ng-click="submitText('syntactic_app')">Submit</button>
+        </form>
     </div>
-    <button type="submit" class="btn btn-primary" ng-click="submitText('syntactic_app')">Submit</button>
-  </form>
-</div>
 {% endblock %}

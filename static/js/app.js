@@ -9,6 +9,9 @@
             $scope.inputText = "";
             $scope.modalMsg = "Message";
             $scope.data = [];
+            $scope.analyzer = "";
+
+
             $scope.isThereAnyData = function() {
 
                 if ($scope.data.length == 0) {
@@ -547,7 +550,7 @@
             };
             $scope.submitText = function(app_name) {
                 $scope.data = [];
-                console.log("input text = " + $scope.inputText);
+                //console.log("input text = " + $scope.inputText);
                 console.log("sending request to server ");
                 var url;
                 if(app_name === "morpho_app"){
@@ -557,10 +560,12 @@
                     url = "http://localhost:8000/get_syntactic_analysis/"
                   }
                 }
+                console.log($scope.analyzer);
                 $http({
                     method: "POST",
                     url: url,
-                    data: "text=" + $scope.inputText,
+                    data: $.param({ 'text': $scope.inputText, 'analyzer': $scope.analyzer}),
+                    // data: "text=" + $scope.inputText,
                     headers: {
                         'Content-Type': 'application/x-www-form-urlencoded; charset=UTF-8'
                     }

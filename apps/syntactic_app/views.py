@@ -33,6 +33,7 @@ def analysis_view(request):
         print "the request method is POST"
         try:
             text = request.POST['text'].decode('utf-8')
+            analyzer = request.POST['analyzer'].decode('utf-8')
             #print 'the text is ' + text
             tagged_text = pos_tag(text)
             print "text tagged"
@@ -45,7 +46,7 @@ def analysis_view(request):
 
             print "parse evaluation"
         except Exception as err:
-            print "Error: "+ str(err)
+            print "Error: "+ str(err) + str(type(err))
             output['data'] = 'Error ' + str(err)
     print "==> response sent to client"
     return JsonResponse(output)
