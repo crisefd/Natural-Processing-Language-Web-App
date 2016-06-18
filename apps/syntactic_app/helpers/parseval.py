@@ -137,7 +137,7 @@ def parseval(files1, files2, argv=[]):
             print ''
             print 'Average precision, recall,  cross brackets and F-score:'
             print (pre1, re1, crossing,fscore)
-            return { 'precision': pre1, 'recall': re1, 'cross-brackets': crossing, 'f-score': fscore }
+            return { 'precision': pre1, 'recall': re1, 'cross_brackets': crossing, 'f_score': fscore }
 
 #text2='wsj_0003.mrg'
 #text1= 'siembra.txt.parsed'

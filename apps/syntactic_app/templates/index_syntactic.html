@@ -24,4 +24,43 @@
             <button type="submit" class="btn btn-primary" ng-click="submitText('syntactic_app')">Submit</button>
         </form>
     </div>
+    <div class="tree-container">
+      <h2>Tree</h2>
+      <textarea readonly>
+        {[{data.output_tree}]}
+      </textarea>
+    </div>
+    <div class="parseval-container">
+      <h2>Parse Eval</h2>
+      <table ng-if="isThereAnyData()">
+      <tr>
+        <th>
+          <b>Precision</b>
+        </th>
+        <th>
+          <b>Recall</b>
+        </th>
+        <th>
+          <b>Cross Brackets</b>
+        </th>
+        <th>
+          <b>F Score</b>
+        </th>
+      </tr>
+      <tr>
+        <th>
+          {[{data.parse_eval_output.precision}]}
+        </th>
+        <th>
+          {[{data.parse_eval_output.recall}]}
+        </th>
+        <th>
+          {[{data.parse_eval_output.cross_brackets}]}
+        </th>
+        <th>
+          {[{data.parse_eval_output.f-score}]}
+        </th>
+      </tr>
+    </table>
+    </div>
 {% endblock %}

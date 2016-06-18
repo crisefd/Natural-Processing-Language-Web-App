@@ -553,18 +553,21 @@
                 //console.log("input text = " + $scope.inputText);
                 console.log("sending request to server ");
                 var url;
+                var data;
                 if(app_name === "morpho_app"){
                   url = "http://localhost:8000/get_morphological_analysis/"
+                  data = $.param({ 'text': $scope.inputText })
                 }else{
                   if(app_name === "syntactic_app"){
                     url = "http://localhost:8000/get_syntactic_analysis/"
+                    data = $.param({ 'text': $scope.inputText, 'analyzer': $scope.analyzer})
                   }
                 }
                 console.log($scope.analyzer);
                 $http({
                     method: "POST",
                     url: url,
-                    data: $.param({ 'text': $scope.inputText, 'analyzer': $scope.analyzer}),
+                    data: data,
                     // data: "text=" + $scope.inputText,
                     headers: {
                         'Content-Type': 'application/x-www-form-urlencoded; charset=UTF-8'
