@@ -12,7 +12,7 @@
                 Bikel
             </label><br/>
             <label>
-                <input type="radio" ng-model="analyzer" ng-value="Stanford">
+                <input type="radio" ng-model="analyzer" value="Stanford">
                 Stanford
             </label><br/>
         </form>
@@ -24,15 +24,17 @@
             <button type="submit" class="btn btn-primary" ng-click="submitText('syntactic_app')">Submit</button>
         </form>
     </div>
-    <div class="tree-container">
+    <div class="tree-container" ng-if="isThereAnyData()">
       <h2>Tree</h2>
-      <textarea readonly>
+      <div class="form-group">
+      <textarea readonly class="form-control" rows="12">
         {[{data.output_tree}]}
       </textarea>
     </div>
-    <div class="parseval-container">
+    </div>
+    <div class="parseval-container" ng-if="isThereAnyData()">
       <h2>Parse Eval</h2>
-      <table ng-if="isThereAnyData()">
+      <table >
       <tr>
         <th>
           <b>Precision</b>

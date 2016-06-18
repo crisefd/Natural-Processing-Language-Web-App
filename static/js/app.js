@@ -551,7 +551,7 @@
             $scope.submitText = function(app_name) {
                 $scope.data = [];
                 //console.log("input text = " + $scope.inputText);
-                console.log("sending request to server ");
+                console.log("sending request to server " + $scope.analyzer);
                 var url;
                 var data;
                 if(app_name === "morpho_app"){
