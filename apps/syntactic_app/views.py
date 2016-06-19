@@ -8,6 +8,9 @@ from django.views.decorators.csrf import csrf_exempt
 import os
 import traceback
 
+
+raw_file_name = ''
+
 def print_to_file(txt, name=''):
     f = open(settings.BASE_DIR + '/syn_ana_files/' + name, 'w')
     f.write(txt)
@@ -55,6 +58,7 @@ def stanford_parse(txt, output_tree):
 @csrf_exempt
 def analysis_view(request):
     output = {}
+    global raw_file_name
     print "==> request received in server"
     if request.method == 'POST':
         print "the request method is POST", request.POST
@@ -67,11 +71,11 @@ def analysis_view(request):
             if analyzer == 'Bikel':
                 dan_bikel_parse(text, output_tree)
                 parse_eval_output = parseval(settings.BASE_DIR + '/syn_ana_files/bikel-pos.txt.parsed',
-                                             settings.BASE_DIR + '/static/wsj/gold_standard_tree/wsj_0001.mrg')
+                                             settings.BASE_DIR + '/static/wsj/gold_standard_tree/{0}.mrg'.format(raw_file_name))
             elif analyzer == 'Stanford':
                 stanford_parse(text, output_tree)
                 parse_eval_output = parseval(settings.BASE_DIR + '/syn_ana_files/bikel-pos.txt.parsed',
-                                             settings.BASE_DIR + '/static/wsj/gold_standard_tree/wsj_0001.mrg')
+                                             settings.BASE_DIR + '/static/wsj/gold_standard_tree/{0}.mrg'.format(raw_file_name))
             #print 'output-tree', output_tree[0]
             output['data'] = {
                 'output_tree': output_tree[0],
@@ -84,6 +88,27 @@ def analysis_view(request):
             output['data'] = 'Error ' + str(err)
     print "==> response sent to client"
     return JsonResponse(output)
+
+
+def get_raw_text_view(request):
+    global raw_file_name
+    output = {}
+    content = ''
+    if request.method == 'GET':
+        try:
+            print "request method is GET", request.GET
+            raw_file_name = request.GET['name'].decode('utf-8')
+            print "file_name=", raw_file_name
+            f = open(settings.BASE_DIR + '/static/wsj/raw_text/' + raw_file_name)
+            content = f.readlines()[2:]
+        except Exception as err:
+            print "Error: "+ str(err) + str(type(err))
+            traceback.print_exc()
+            output['data'] = 'Error ' + str(err)
+    output['data'] = { 'text': content }
+    return JsonResponse(output)
+
+
 
 
 def syntactic_ana_view(request):

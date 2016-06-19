@@ -8,13 +8,19 @@
         </div>
         <form name="myForm">
             <label>
-                <input type="radio" ng-model="analyzer"  value="Bikel">
+                <input type="radio" ng-model="analyzer" value="Bikel">
                 Bikel
             </label><br/>
             <label>
                 <input type="radio" ng-model="analyzer" value="Stanford">
                 Stanford
             </label><br/>
+            <label for="singleSelect">
+                Single select:
+            </label><br>
+            <select name="singleSelect" ng-model="selectedRawFile">
+                <option value="{[{rawFile}]}" ng-repeat="rawFile in rawFiles">{[{rawFile}]}</option>
+            </select><br>
         </form>
         <form>
             <div class="form-group">
@@ -25,44 +31,44 @@
         </form>
     </div>
     <div class="tree-container" ng-if="isThereAnyData()">
-      <h2>Tree</h2>
-      <div class="form-group">
-      <textarea readonly class="form-control" rows="12">
-        {[{data.output_tree}]}
-      </textarea>
-    </div>
+        <h2>Tree</h2>
+        <div class="form-group">
+            <textarea readonly class="form-control" rows="12">
+                {[{data.output_tree}]}
+            </textarea>
+        </div>
     </div>
     <div class="parseval-container" ng-if="isThereAnyData()">
-      <h2>Parse Eval</h2>
-      <table >
-      <tr>
-        <th>
-          <b>Precision</b>
-        </th>
-        <th>
-          <b>Recall</b>
-        </th>
-        <th>
-          <b>Cross Brackets</b>
-        </th>
-        <th>
-          <b>F Score</b>
-        </th>
-      </tr>
-      <tr>
-        <th>
-          {[{data.parse_eval_output.precision}]}
-        </th>
-        <th>
-          {[{data.parse_eval_output.recall}]}
-        </th>
-        <th>
-          {[{data.parse_eval_output.cross_brackets}]}
-        </th>
-        <th>
-          {[{data.parse_eval_output.f-score}]}
-        </th>
-      </tr>
-    </table>
+        <h2>Parse Eval</h2>
+        <table >
+            <tr>
+                <th>
+                    <b>Precision</b>
+                </th>
+                <th>
+                    <b>Recall</b>
+                </th>
+                <th>
+                    <b>Cross Brackets</b>
+                </th>
+                <th>
+                    <b>F Score</b>
+                </th>
+            </tr>
+            <tr>
+                <th>
+                    {[{data.parse_eval_output.precision}]}
+                </th>
+                <th>
+                    {[{data.parse_eval_output.recall}]}
+                </th>
+                <th>
+                    {[{data.parse_eval_output.cross_brackets}]}
+                </th>
+                <th>
+                    {[{data.parse_eval_output.f-score}]}
+                </th>
+            </tr>
+        </table>
     </div>
 {% endblock %}
