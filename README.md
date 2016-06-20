@@ -80,7 +80,7 @@
 
 ### Installation of Stanford and Dan Bikel libraries
 
-Create the directories 'static/stanford-parser',  'static/stanford-postagger' and 'static/dbparser'
+Create the directories `static/stanford-parser`, `static/stanford-postagger` and `static/dbparser`
 
 And place the contents of the libraries in the corresponding directories
 
@@ -94,7 +94,7 @@ Download from:
 `$ python manage.py runserver`
 
 ## For morphological analysis in spanish
-Go to URL /morpho_app/
+Go to URL `/morpho_app/`
 
 ## For syntactic analysis in english
-Go to URL /syntactic_app/
+Go to URL `/syntactic_app/`
