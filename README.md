@@ -74,9 +74,9 @@
 
 `$ sudo add-apt-repository ppa:webupd8team/java`
 
-`$ sudo apt-get update`
+`$ sudo aptitude update`
 
-`$ sudo apt-get install -y oracle-java8-installer`
+`$ sudo aptitude install -y oracle-java8-installer`
 
 ### Installation of Stanford and Dan Bikel libraries
 
@@ -85,9 +85,9 @@ Create the directories 'static/stanford-parser',  'static/stanford-postagger' an
 And place the contents of the libraries in the corresponding directories
 
 Download from:
-[Dan Bikel's Parser Engine](http://www.bibsonomy.org/url/9fdf389e4993e908ea01dca8996cc65e)
-[Stanford Parser](http://nlp.stanford.edu/software/lex-parser.shtml)
-[Stanford Postagger](http://nlp.stanford.edu/software/tagger.shtml)
+- [Dan Bikel's Parser Engine](http://www.bibsonomy.org/url/9fdf389e4993e908ea01dca8996cc65e)
+- [Stanford Parser](http://nlp.stanford.edu/software/lex-parser.shtml)
+- [Stanford Postagger](http://nlp.stanford.edu/software/tagger.shtml)
 
 ## Running the App in localhost
 
