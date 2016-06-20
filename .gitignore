@@ -1,7 +1,7 @@
 *~
 *pyc
 db.sqlite3
-node_modules
+/node_modules
 static/angular
 static/angular-route
 static/bootstrap
