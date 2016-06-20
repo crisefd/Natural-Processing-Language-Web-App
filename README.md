@@ -4,6 +4,7 @@
 - Freeling 4.0
 - Stemmer-es
 - Lematizador-es in R
+- NLTK
 - Stanford Parser
 - Stanford Postagger
 - Dan Bikel's Parser
