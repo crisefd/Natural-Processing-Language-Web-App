@@ -60,7 +60,7 @@
 
 `$ source env/bin/activate`
 
-`$ pip install -r npl_project/requirements.txt`
+`$ pip install -r nlp_project/requirements.txt`
 ### Installation of the required front-end libraries
 
 `$ bower install`
