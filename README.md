@@ -1,9 +1,13 @@
-# Natural Processing Language Web App
+# Natural Language Processing Web App
 
 - Django 1.9 (Python 2.7)
 - Freeling 4.0
 - Stemmer-es
 - Lematizador-es in R
+- NLTK
+- Stanford Parser
+- Stanford Postagger
+- Dan Bikel's Parser
 
 ## Installing the required libraries
 
@@ -41,13 +45,14 @@
 - Install the NodeJS framework
 
 `$ curl -sL https://deb.nodesource.com/setup_4.x | sudo -E bash -`
+
 `$ sudo aptitude install -y nodejs`
 
 - Install bower
 
 `$ npm install -g bower`
 
-### Install django and virtualenv
+### Installation of Django and Virtualenv
 
 `$ pip install virtualenv`
 
@@ -55,12 +60,42 @@
 
 `$ source env/bin/activate`
 
-`$ pip install -r npl_project/requirements.txt`
-### Install the required front-end libraries
+`$ pip install -r nlp_project/requirements.txt`
+### Installation of the required front-end libraries
 
 `$ bower install`
 
+### Installation of NLTK
+
+`$ sudo pip install -U nltk`
+
+`$ python -c "import nltk; nltk.download('all')"`
+
+### Installation of Java 8
+
+`$ sudo add-apt-repository ppa:webupd8team/java`
+
+`$ sudo aptitude update`
+
+`$ sudo aptitude install -y oracle-java8-installer`
+
+### Installation of Stanford and Dan Bikel libraries
+
+Create the directories `static/stanford-parser`, `static/stanford-postagger` and `static/dbparser`
+
+And place the contents of the libraries in the corresponding directories
+
+Download from:
+- [Dan Bikel's Parser Engine](http://www.bibsonomy.org/url/9fdf389e4993e908ea01dca8996cc65e)
+- [Stanford Parser](http://nlp.stanford.edu/software/lex-parser.shtml)
+- [Stanford Postagger](http://nlp.stanford.edu/software/tagger.shtml)
 
 ## Running the App in localhost
 
 `$ python manage.py runserver`
+
+## For morphological analysis in spanish
+Go to URL `/morpho_app/`
+
+## For syntactic analysis in english
+Go to URL `/syntactic_app/`

@@ -1,24 +1,6 @@
 (   (S
-    (NP (NNP McDermott) (NNP International) (NNP Inc.))
+    (NP (DT The) (NN cat))
     (VP
-      (VBD said)
-      (SBAR
-        (S
-          (NP (PRP$ its) (NNP Babcock) (CC &) (NNP Wilcox) (NN unit))
-          (VP
-            (VBD completed)
-            (NP
-              (NP (DT the) (NN sale))
-              (PP
-                (IN of)
-                (NP
-                  (PRP$ its)
-                  (NNP Bailey)
-                  (NNP Controls)
-                  (NNP Operations))))
-            (PP
-              (TO to)
-              (NP
-                (NP (NNP Finmeccanica) (NNP S.p.A.))
-                (PP (IN for) (NP (QP ($ $) (CD 295) (CD million))))))))))
+      (VBZ eats)
+      (NP (NP (NN food)) (PP (IN inside) (NP (DT the) (NN house)))))
     (. .)))

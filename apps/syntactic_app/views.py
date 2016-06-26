@@ -69,10 +69,23 @@ def dan_bikel_parse(txt, output_tree):
     output_tree.append("\n".join(f.readlines()))
 
 def stanford_parse(txt, output_tree):
-    tree = stanford_parser.raw_parse(txt)
+    txt = txt.split("\n")
+    trees = stanford_parser.raw_parse_sents(txt)
     print "parsed"
-    parsed_txt = str(tree.next())
-    parsed_txt = change_stanford_format(parsed_txt)
+    parsed_txt = ""
+    #for tree in list(trees):
+    #    parsed_txt += change_stanford_format(str(tree)) + "\n"
+    while True:
+        try:
+            tree = trees.next()
+            while True:
+                try:
+                    parsed_txt += change_stanford_format(str(tree.next())) + "\n"
+                except StopIteration:
+                    break
+        except StopIteration:
+            break;
+    # parsed_txt = change_stanford_format(parsed_txt)
     print "formatted"
     output_tree.append(parsed_txt)
     print 'output-tree', output_tree[0]
@@ -88,19 +101,20 @@ def analysis_view(request):
 
         try:
             text = request.POST['text'].decode('utf-8')
-            print "text= ", text
             analyzer = request.POST['analyzer'].decode('utf-8')
-            print 'analyzer ', analyzer
+            parseval_flag = request.POST['parseval'].decode('utf-8')
             parse_eval_output = {}
             output_tree = []
             if analyzer == 'Bikel':
                 dan_bikel_parse(text, output_tree)
-                parse_eval_output = parseval(settings.BASE_DIR + '/syn_ana_files/bikel-pos.txt.parsed',
-                                             settings.BASE_DIR + '/static/wsj/gold_standard_tree/{0}.mrg'.format(raw_file_name))
+                if parseval_flag == "true":
+                    parse_eval_output = parseval(settings.BASE_DIR + '/syn_ana_files/bikel-pos.txt.parsed',
+                                                 settings.BASE_DIR + '/static/wsj/gold_standard_tree/{0}.mrg'.format(raw_file_name))
             elif analyzer == 'Stanford':
                 stanford_parse(text, output_tree)
-                parse_eval_output = parseval(settings.BASE_DIR + '/syn_ana_files/bikel-pos.txt.parsed',
-                                             settings.BASE_DIR + '/static/wsj/gold_standard_tree/{0}.mrg'.format(raw_file_name))
+                if parseval_flag == "true":
+                    parse_eval_output = parseval(settings.BASE_DIR + '/syn_ana_files/bikel-pos.txt.parsed',
+                                                 settings.BASE_DIR + '/static/wsj/gold_standard_tree/{0}.mrg'.format(raw_file_name))
             #print 'output-tree', output_tree[0]
             output['data'] = {
                 'output_tree': output_tree[0],
@@ -126,7 +140,7 @@ def get_raw_text_view(request):
             print "file_name=", raw_file_name
             f = open(settings.BASE_DIR + '/static/wsj/raw_text/' + raw_file_name)
             content = "".join(f.readlines()[2:])
-            print "raw text sent ==> ", content
+            #print "raw text sent ==> ", content
         except Exception as err:
             print "Error: "+ str(err) + str(type(err))
             traceback.print_exc()

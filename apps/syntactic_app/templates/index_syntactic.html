@@ -19,6 +19,7 @@
                 Single select:
             </label><br>
             <select name="singleSelect" ng-model="selectedRawFile">
+                <!-- <option value="">Custom</option> -->
                 <option value="{[{rawFile}]}" ng-repeat="rawFile in rawFiles">{[{rawFile}]}</option>
             </select><br>
         </form>
