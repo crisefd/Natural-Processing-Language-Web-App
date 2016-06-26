@@ -39,11 +39,14 @@ def to_bikel_format(output_tagged_txt):
                 if re.search(r"\w+.(\.|\,|:|!|\?|\'s|\'|;)", item_0):
                     if item_0[-1] == "'":
                         punc = "({0} (POS))".format(item_0[-1])
+                        item_0 = item_0[:-1]
                     elif item_0[-2:] == "'s":
                         punc = "({0} (POS))".format(item_0[-2:])
+                        item_0 = item_0[:-2]
                     else:
                         punc = "({0} ({0}))".format(item_0[-1])
-                bikel_txt += "(" + item[0] + " " + item_1 + ")"
+                        item_0 = item_0[:-1]
+                bikel_txt += "(" + item_0 + " " + item_1 + ")" + punc
             bikel_txt += ")"
             output_bikel_format += bikel_txt + '\n'
     return output_bikel_format
@@ -60,9 +63,6 @@ def change_stanford_format(txt):
 def dan_bikel_parse(txt, output_tree):
     output_tagged_txt = pos_tag(txt)
     output_bikel_format = to_bikel_format(output_tagged_txt)
-    #for bikel_txt in output_bikel_format:
-    #    print_to_file(bikel_txt, name='bikel-pos.txt')
-
     print_to_file("".join(output_bikel_format), name='bikel-pos.txt')
     os.system("{0}/static/dbparser/bin/parse 1000 {0}/static/dbparser/settings/collins.properties {0}/static/wsj/wsj-02-21.obj.gz {0}/syn_ana_files/bikel-pos.txt".format(settings.BASE_DIR))
     f = open("{0}/syn_ana_files/bikel-pos.txt.parsed".format(settings.BASE_DIR))
@@ -125,7 +125,8 @@ def get_raw_text_view(request):
             raw_file_name = request.GET['name'].decode('utf-8')
             print "file_name=", raw_file_name
             f = open(settings.BASE_DIR + '/static/wsj/raw_text/' + raw_file_name)
-            content = f.readlines()[2:]
+            content = "".join(f.readlines()[2:])
+            print "raw text sent ==> ", content
         except Exception as err:
             print "Error: "+ str(err) + str(type(err))
             traceback.print_exc()

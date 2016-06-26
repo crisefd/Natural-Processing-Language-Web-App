@@ -26,33 +26,36 @@
                     }
                 );
 
-                $scope.$watch('selectedRawFile',function(newValue,oldValue){
-                  var url = "http://localhost:8000/get_raw_text/";
-                  // var data = $.param({'name': $scope.selectedRawFile });
-                  console.log('sending request for raw text', $scope.selectedRawFile);
-                  $http({
-                      method: "GET",
-                      url: url,
-                      params: {name: $scope.selectedRawFile},
-                      headers: {
-                          'Content-Type': 'application/x-www-form-urlencoded; charset=UTF-8'
-                      }
-                  }).success(function(response) {
-                      console.log('success');
-                      $scope.inputText = response.data['text'];
-                  }).error(function(error) {
-                      console.log('error with getting raw text');
-                  });
-               });
+            $scope.$watch('selectedRawFile', function(newValue, oldValue) {
+                var url = "http://localhost:8000/get_raw_text/";
+                // var data = $.param({'name': $scope.selectedRawFile });
+                console.log('sending request for raw text', $scope.selectedRawFile);
+                $http({
+                    method: "GET",
+                    url: url,
+                    params: {
+                        name: $scope.selectedRawFile
+                    },
+                    headers: {
+                        'Content-Type': 'application/x-www-form-urlencoded; charset=UTF-8'
+                    }
+                }).success(function(response) {
+                    console.log('success');
+                    $scope.inputText = response.data['text'];
+                    console.log("raw text received ==> " + $scope.inputText)
+                }).error(function(error) {
+                    console.log('error with getting raw text');
+                });
+            });
 
 
             $scope.isThereAnyData = function() {
 
                 if ($scope.data.length == 0) {
-                    console.log("isThereAnyData false");
+                    //console.log("isThereAnyData false");
                     return false;
                 }
-                console.log("isThereAnyData true");
+                //console.log("isThereAnyData true");
                 return true;
             };
 
