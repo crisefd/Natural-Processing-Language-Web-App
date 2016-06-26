@@ -1,3 +1,4 @@
+"use strict";
 (function() {
     var app = angular.module("freelingApp", ["ngRoute", "ui.bootstrap"]);
     app.config(function($interpolateProvider) {
@@ -10,7 +11,7 @@
             $scope.modalMsg = "Message";
             $scope.data = [];
             $scope.analyzer = "";
-            $scope.selectedRawFile = "";
+            $scope.selectedRawFile = "Custom";
             $scope.rawFiles = Array.apply(null, Array(99))
                 .map(
                     function(x, i) {
@@ -25,34 +26,40 @@
                         return prefix + str
                     }
                 );
+            $scope.rawFiles.unshift("Custom");
 
-                $scope.$watch('selectedRawFile',function(newValue,oldValue){
-                  var url = "http://localhost:8000/get_raw_text/";
-                  // var data = $.param({'name': $scope.selectedRawFile });
-                  console.log('sending request for raw text', $scope.selectedRawFile);
+            $scope.$watch('selectedRawFile', function(newValue, oldValue) {
+                var url = "http://localhost:8000/get_raw_text/";
+                if(newValue !== "Custom"){
+                  console.log('sending request for raw text', newValue);
                   $http({
                       method: "GET",
                       url: url,
-                      params: {name: $scope.selectedRawFile},
+                      params: {
+                          name: newValue
+                      },
                       headers: {
                           'Content-Type': 'application/x-www-form-urlencoded; charset=UTF-8'
                       }
                   }).success(function(response) {
                       console.log('success');
                       $scope.inputText = response.data['text'];
+                      //console.log("raw text received ==> " + $scope.inputText)
                   }).error(function(error) {
                       console.log('error with getting raw text');
                   });
-               });
+                }
+
+            });
 
 
             $scope.isThereAnyData = function() {
 
                 if ($scope.data.length == 0) {
-                    console.log("isThereAnyData false");
+                    //console.log("isThereAnyData false");
                     return false;
                 }
-                console.log("isThereAnyData true");
+                //console.log("isThereAnyData true");
                 return true;
             };
 
@@ -586,8 +593,7 @@
             };
             $scope.submitText = function(app_name) {
                 $scope.data = [];
-                //console.log("input text = " + $scope.inputText);
-                console.log("sending request to server " + $scope.analyzer);
+                console.log("sending request to server " + $scope.selectedRawFile);
                 var url;
                 var data;
                 if (app_name === "morpho_app") {
@@ -597,10 +603,15 @@
                     })
                 } else {
                     if (app_name === "syntactic_app") {
+                        var parseval = "true";
                         url = "http://localhost:8000/get_syntactic_analysis/"
+                        if($scope.selectedRawFile === "Custom"){
+                          parseval = "false";
+                        }
                         data = $.param({
                             'text': $scope.inputText,
-                            'analyzer': $scope.analyzer
+                            'analyzer': $scope.analyzer,
+                            'parseval': parseval
                         })
                     }
                 }
@@ -617,7 +628,7 @@
                     console.log('success');
                     $scope.data = response.data;
                     //console.log($scope.data.length)
-                    console.log("data= " + $scope.data);
+                    //console.log("data= " + $scope.data);
                 }).error(function(error) {
                     console.log('error');
                 });
