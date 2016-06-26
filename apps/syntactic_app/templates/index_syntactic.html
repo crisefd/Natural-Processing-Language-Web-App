@@ -1,10 +1,10 @@
 {% extends "base.html"%}
 {% load staticfiles %}
-{%block title%}SYNTATIC ANALYSIS{% endblock %}
+{%block title%}SYNTACTIC ANALYSIS{% endblock %}
 {% block content %}
     <div>
         <div class='header'>
-            Syntatic Analysis App
+            Syntactic Analysis App
         </div>
         <form name="myForm">
             <label>
@@ -33,7 +33,7 @@
     <div class="tree-container" ng-if="isThereAnyData()">
         <h2>Tree</h2>
         <div class="form-group">
-            <textarea readonly class="form-control" rows="12">
+            <textarea readonly class="form-control" rows="15">
                 {[{data.output_tree}]}
             </textarea>
         </div>
