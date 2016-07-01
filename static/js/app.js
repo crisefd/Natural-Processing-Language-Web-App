@@ -628,7 +628,7 @@
                     console.log('success');
                     $scope.data = response.data;
                     //console.log($scope.data.length)
-                    //console.log("data= " + $scope.data);
+                    console.log("data= " + $scope.data);
                 }).error(function(error) {
                     console.log('error');
                 });

@@ -121,6 +121,10 @@ def analysis_view(request):
                 'parse_eval_output': parse_eval_output,
             }
             print "parse evaluation"
+        except IndexError as ierr:
+            output['data'] = {
+                'output_tree': output_tree[0],
+            }
         except Exception as err:
             print "Error: "+ str(err) + str(type(err))
             traceback.print_exc()
