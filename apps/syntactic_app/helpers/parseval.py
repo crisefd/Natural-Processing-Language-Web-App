@@ -93,9 +93,11 @@ def parseval(files1, files2, argv=[]):
                # print parts1
 
                # Evaluate and print the output
-            print ''
             precision = recall = crossing = 0
-            for i in range(len(parts1)):
+            print "SEGMENTS1 ", len(segments1)
+            print "SEGMENTS2 ", len(segments2)
+            for i in range(0, len(parts1)):
+                print "INDEX ",  str(i)
                 if showTrees or showSegments or showIndividualEval or showDisagreements:
                    print '########## ' + str(i) + ' ##########'
                    print ''

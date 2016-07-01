@@ -54,8 +54,10 @@ def to_bikel_format(output_tagged_txt):
 ############ Stanford pre-processing ################
 
 def change_stanford_format(txt):
+    print "parsed ==> ", txt
     txt = txt[6:(len(txt) - 1)]
-    return "( " + txt + ")"
+    return "(" + txt + ")"
+    # return txt
 
 
 ################## Parsers ##############################
@@ -71,7 +73,7 @@ def dan_bikel_parse(txt, output_tree):
 def stanford_parse(txt, output_tree):
     txt = txt.split("\n")
     trees = stanford_parser.raw_parse_sents(txt)
-    print "parsed"
+
     parsed_txt = ""
     #for tree in list(trees):
     #    parsed_txt += change_stanford_format(str(tree)) + "\n"
@@ -122,6 +124,8 @@ def analysis_view(request):
             }
             print "parse evaluation"
         except IndexError as ierr:
+            print "Error: "+ str(ierr) + str(type(ierr))
+            traceback.print_exc()
             output['data'] = {
                 'output_tree': output_tree[0],
             }
