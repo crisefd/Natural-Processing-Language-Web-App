@@ -38,13 +38,13 @@ def to_bikel_format(output_tagged_txt):
                 punc = ""
                 if re.search(r"\w+.(\.|\,|:|!|\?|\'s|\'|;)", item_0):
                     if item_0[-1] == "'":
-                        punc = "({0} (POS))".format(item_0[-1])
+                        punc = "({0}(POS))".format(item_0[-1])
                         item_0 = item_0[:-1]
                     elif item_0[-2:] == "'s":
-                        punc = "({0} (POS))".format(item_0[-2:])
+                        punc = "({0}(POS))".format(item_0[-2:])
                         item_0 = item_0[:-2]
                     else:
-                        punc = "({0} ({0}))".format(item_0[-1])
+                        punc = "({0}({0}))".format(item_0[-1])
                         item_0 = item_0[:-1]
                 bikel_txt += "(" + item_0 + " " + item_1 + ")" + punc
             bikel_txt += ")"
@@ -54,8 +54,12 @@ def to_bikel_format(output_tagged_txt):
 ############ Stanford pre-processing ################
 
 def change_stanford_format(txt):
+    print "parsed ==> ", txt
+
     txt = txt[6:(len(txt) - 1)]
-    return "( " + txt + ")"
+    txt = "(" + txt + ")"
+    return txt
+    # return txt
 
 
 ################## Parsers ##############################
@@ -71,7 +75,7 @@ def dan_bikel_parse(txt, output_tree):
 def stanford_parse(txt, output_tree):
     txt = txt.split("\n")
     trees = stanford_parser.raw_parse_sents(txt)
-    print "parsed"
+
     parsed_txt = ""
     #for tree in list(trees):
     #    parsed_txt += change_stanford_format(str(tree)) + "\n"
@@ -121,6 +125,12 @@ def analysis_view(request):
                 'parse_eval_output': parse_eval_output,
             }
             print "parse evaluation"
+        except IndexError as ierr:
+            print "Error: "+ str(ierr) + str(type(ierr))
+            traceback.print_exc()
+            output['data'] = {
+                'output_tree': output_tree[0],
+            }
         except Exception as err:
             print "Error: "+ str(err) + str(type(err))
             traceback.print_exc()
