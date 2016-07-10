@@ -1,0 +1,1 @@
+analyze -f myconfig.es --output conll --outlv tagged <input-file.txt >output-file.tag  
