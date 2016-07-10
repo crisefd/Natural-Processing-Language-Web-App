@@ -1,2 +1,2 @@
-((Pacific (NNP))(First (NNP))(Financial (NNP))(Corp (NNP))(.(.))(said (VBD))(shareholders (NNS))(approved (VBD))(its (PRP$))(acquisition (NN))(by (IN))(Royal (NNP))(Trustco (NNP))(Ltd (NNP))(.(.))(of (IN))(Toronto (NNP))(for (IN))($27 (CD))(a (DT))(share (NN))(,(,))(or (CC))($212 (CD))(million (NN))(.(.)))
-((The (DT))(thrift (NN))(holding (VBG))(company (NN))(said (VBD))(it (PRP))(expects (VBZ))(to (TO))(obtain (VB))(regulatory (JJ))(approval (NN))(and (CC))(complete (VB))(the (DT))(transaction (NN))(by (IN))(year-end (NN))(.(.)))
+((Pierre (NNP))(Vinken (NNP))(,(,))(61 (CD))(years (NNS))(old (RB))(,(,))(will (MD))(join (VB))(the (DT))(board (NN))(as (IN))(a (DT))(nonexecutive (JJ))(director (NN))(Nov (NNP))(.(.))(29 (CD))(.(.)))
+((Mr (NNP))(.(.))(Vinken (NNP))(is (VBZ))(chairman (NN))(of (IN))(Elsevier (NNP))(N.V. (NNP))(,(,))(the (DT))(Dutch (JJ))(publishing (NN))(group (IN))(.(.)))
