@@ -1,43 +1,27 @@
 (  (S
-    (NP (NNP Pacific) (NNP First) (NNP Financial) (NNP Corp.))
+    (NP
+      (NP (NNP Rudolph) (NNP Agnew))
+      (, ,)
+      (UCP
+        (ADJP (NP (CD 55) (NNS years)) (JJ old))
+        (CC and)
+        (NP
+          (NP (JJ former) (NN chairman))
+          (PP
+            (IN of)
+            (NP (NNP Consolidated) (NNP Gold) (NNP Fields) (NNP PLC)))))
+      (, ,))
     (VP
-      (VBD said)
-      (SBAR
-        (S
-          (NP (NNS shareholders))
-          (VP
-            (VBD approved)
-            (NP (PRP$ its) (NN acquisition))
-            (PP
-              (IN by)
-              (NP
-                (NP (NNP Royal) (NNP Trustco) (NNP Ltd.))
-                (PP (IN of) (NP (NNP Toronto)))))
-            (PP
-              (IN for)
-              (NP
-                (NP (NP ($ $) (CD 27)) (NP (DT a) (NN share)))
-                (, ,)
-                (CC or)
-                (NP (QP ($ $) (CD 212) (CD million)))))))))
-    (. .)))
-(  (S
-    (NP (DT The) (NN thrift) (VBG holding) (NN company))
-    (VP
-      (VBD said)
-      (SBAR
-        (S
-          (NP (PRP it))
-          (VP
-            (VBZ expects)
-            (S
-              (VP
-                (TO to)
-                (VP
-                  (VP (VB obtain) (NP (JJ regulatory) (NN approval)))
-                  (CC and)
-                  (VP
-                    (VB complete)
-                    (NP (DT the) (NN transaction))
-                    (PP (IN by) (NP (NN year-end)))))))))))
+      (VBD was)
+      (VP
+        (VBN named)
+        (NP
+          (NP (DT a) (JJ nonexecutive) (NN director))
+          (PP
+            (IN of)
+            (NP
+              (DT this)
+              (JJ British)
+              (JJ industrial)
+              (NN conglomerate))))))
     (. .)))

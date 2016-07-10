@@ -38,13 +38,13 @@ def to_bikel_format(output_tagged_txt):
                 punc = ""
                 if re.search(r"\w+.(\.|\,|:|!|\?|\'s|\'|;)", item_0):
                     if item_0[-1] == "'":
-                        punc = "({0} (POS))".format(item_0[-1])
+                        punc = "({0}(POS))".format(item_0[-1])
                         item_0 = item_0[:-1]
                     elif item_0[-2:] == "'s":
-                        punc = "({0} (POS))".format(item_0[-2:])
+                        punc = "({0}(POS))".format(item_0[-2:])
                         item_0 = item_0[:-2]
                     else:
-                        punc = "({0} ({0}))".format(item_0[-1])
+                        punc = "({0}({0}))".format(item_0[-1])
                         item_0 = item_0[:-1]
                 bikel_txt += "(" + item_0 + " " + item_1 + ")" + punc
             bikel_txt += ")"
@@ -55,8 +55,10 @@ def to_bikel_format(output_tagged_txt):
 
 def change_stanford_format(txt):
     print "parsed ==> ", txt
+
     txt = txt[6:(len(txt) - 1)]
-    return "(" + txt + ")"
+    txt = "(" + txt + ")"
+    return txt
     # return txt
 
 
