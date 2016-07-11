@@ -90,6 +90,9 @@ Download from:
 - [Stanford Parser](http://nlp.stanford.edu/software/lex-parser.shtml)
 - [Stanford Postagger](http://nlp.stanford.edu/software/tagger.shtml)
 
+## CRF
+To fix libcrfpp.so.0 error, install libssl0.9.8
+
 ## Running the App in localhost
 
 `$ python manage.py runserver`
@@ -99,3 +102,4 @@ Go to URL `/morpho_app/`
 
 ## For syntactic analysis in english
 Go to URL `/syntactic_app/`
+
