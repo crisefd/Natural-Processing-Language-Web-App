@@ -1,12 +1,14 @@
 import sys
-
+import os
 
 def clean_output():
+	dir_path = os.getcwd()
+	print "=> ", sys.argv
 	#Salida etiquetada del CRF
-	crf_output_file = open(sys.argv[0], "r")
+	crf_output_file = open(dir_path + "/crf_outputs/" + sys.argv[1], "r")
 	lines = crf_output_file.readlines()
 	#Archivo Transformado
-	crf_cleaned_file = open(sys.argv[1], "w")
+	crf_cleaned_file = open(dir_path + "/crf_outputs/" + sys.argv[2], "w")
 	for line in lines:
 		arrayLine = line.replace("\n","").split("\t")
 		txt = ""
