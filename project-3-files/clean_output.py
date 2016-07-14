@@ -3,8 +3,8 @@ import os
 
 def clean_output():
 	dir_path = os.getcwd()
-	print "=> ", sys.argv
-	#Salida etiquetada del CRF
+	# print "=> ", sys.argv
+	# Salida etiquetada del CRF
 	crf_output_file = open(dir_path + "/crf_outputs/" + sys.argv[1], "r")
 	lines = crf_output_file.readlines()
 	#Archivo Transformado
