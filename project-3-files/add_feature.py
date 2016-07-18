@@ -32,20 +32,24 @@ def add_feature_to_files(path_to_train_file, path_to_test_file, path_to_new_trai
     test_lines = test_file.readlines()
     train_txt = ""
     test_txt = ""
-    for line in train_lines:
-        try:
-            train_txt += line.split()[0] + ".\n"
-        except IndexError:
-            continue
+    #for line in train_lines:
+    #    try:
+    #        train_txt += line.split()[0] + ".\n"
+    #    except IndexError:
+    #        continue
     for line in test_lines:
-        try:
-            test_txt += line.split()[0] + ".\n"
-        except IndexError:
+        spl_line = line.split()
+        if len(spl_line) == 0:
             continue
+        elif spl_line[0] == ".":
+            test_txt += spl_line[0] + ".\n"
+        else:
+            test_txt += spl_line[0] + ".\n"
     if arg != "1":
         temp_test = codecs.open('salida.txt', 'w', "utf-8")
         temp_test.write(test_txt.decode('ISO-8859-1'))
         temp_test.close()
+        os.system("analyze -f myconfig.es --output conll --outlv tagged <salida.txt >salida.tag ")
         # tokens = tokenizer.tokenize(train_txt)
         # splitted_text = splitter.split(sid, tokens, False)
         # mf_analysis = morfo.analyze(splitted_text)
@@ -99,9 +103,9 @@ def add_feature_to_files(path_to_train_file, path_to_test_file, path_to_new_trai
     #new_test_file.close()
     #new_train_file.close()
 
-
-def bar():
-    f = open('salida.tag', 'r')
+# quita puntos
+def bar(name):
+    f = open(name, 'r')
     lines = f.readlines()
     f.close
     lines_to_be_kept = []
@@ -115,12 +119,12 @@ def bar():
             continue
         spl_line2 = lines[i + 1].split()
         #print "2=", spl_line2[0], " 1 ", spl_line1[0]
-        if spl_line2[1] == "." and spl_line1[1] != ".":
+        if (spl_line2[1] == "." and spl_line1[1] != "."):
             lines_to_be_kept.append(i)
-        else:
-            pass
+        elif (spl_line2[1] == "." and spl_line1[1] == "."):
+            lines_to_be_kept.append(i + 1)
     new_lines = []
-    f = open('salida.tag', 'w')
+    f = open(name, 'w')
     print "appending"
     for j in lines_to_be_kept:
         new_lines.append(lines[j])
@@ -128,6 +132,32 @@ def bar():
     f.write("\n".join(new_lines))
     f.close()
 
+# quita espacios
+def foo(name):
+    f = open(name, 'r')
+
+    lines = f.readlines()
+    f.close()
+    lines_to_be_kept = []
+    k = 0
+    for line in lines:
+        spl_line = line.split()
+        if len(spl_line) == 0:
+            k += 1
+            continue
+        lines_to_be_kept.append(line.replace('\n', ''))
+        k += 1
+    f = open(name, 'w')
+    f.write("\n".join(lines_to_be_kept))
+    f.close()
+
+def comp():
+    f1 = open('salida.tag', 'r')
+    f2 = open('test_files/new_esp_1.test', 'r')
+
+
+
 if __name__ == "__main__":
-    #add_feature()
-    bar()
+    add_feature()
+    #bar("salida.tag")
+    foo("salida.tag")
