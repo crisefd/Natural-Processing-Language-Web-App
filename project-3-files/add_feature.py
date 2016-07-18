@@ -43,9 +43,9 @@ def add_feature_to_files(path_to_train_file, path_to_test_file, path_to_new_trai
         except IndexError:
             continue
     if arg != "1":
-        #temp_test = codecs.open('salida.txt', 'w', "utf-8")
-        #temp_test.write(test_txt.decode('ISO-8859-1'))
-        #temp_test.close()
+        temp_test = codecs.open('salida.txt', 'w', "utf-8")
+        temp_test.write(test_txt.decode('ISO-8859-1'))
+        temp_test.close()
         # tokens = tokenizer.tokenize(train_txt)
         # splitted_text = splitter.split(sid, tokens, False)
         # mf_analysis = morfo.analyze(splitted_text)
@@ -99,5 +99,35 @@ def add_feature_to_files(path_to_train_file, path_to_test_file, path_to_new_trai
     #new_test_file.close()
     #new_train_file.close()
 
+
+def bar():
+    f = open('salida.tag', 'r')
+    lines = f.readlines()
+    f.close
+    lines_to_be_kept = []
+    size = len(lines)
+    for i in range(0, size-1):
+        spl_line1 = lines[i].split()
+        spl_line2 = lines[i + 1].split()
+        if i%1000 == 0: print "iter =", i
+        #print spl_line1
+        if len(spl_line1) == 0 or len(spl_line2) == 0:
+            continue
+        spl_line2 = lines[i + 1].split()
+        #print "2=", spl_line2[0], " 1 ", spl_line1[0]
+        if spl_line2[1] == "." and spl_line1[1] != ".":
+            lines_to_be_kept.append(i)
+        else:
+            pass
+    new_lines = []
+    f = open('salida.tag', 'w')
+    print "appending"
+    for j in lines_to_be_kept:
+        new_lines.append(lines[j])
+    print "writing to file ", len(new_lines)
+    f.write("\n".join(new_lines))
+    f.close()
+
 if __name__ == "__main__":
-    add_feature()
+    #add_feature()
+    bar()
