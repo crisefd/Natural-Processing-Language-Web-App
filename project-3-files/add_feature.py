@@ -41,10 +41,11 @@ def add_feature_to_files(path_to_train_file, path_to_test_file, path_to_new_trai
         spl_line = line.split()
         if len(spl_line) == 0:
             continue
-        elif spl_line[0] == ".":
-            test_txt += spl_line[0] + ".\n"
+        elif spl_line[0][-1] == ",":
+            spl_line[0].replace(',', '')
+            test_txt += spl_line[0] + " ,\n"
         else:
-            test_txt += spl_line[0] + ".\n"
+            test_txt += spl_line[0] + " .\n"
     if arg != "1":
         temp_test = codecs.open('salida.txt', 'w', "utf-8")
         temp_test.write(test_txt.decode('ISO-8859-1'))
@@ -151,13 +152,59 @@ def foo(name):
     f.write("\n".join(lines_to_be_kept))
     f.close()
 
+# separa puntos de palabras
+def paar(name):
+    f = open(name, 'r')
+    lines = f.readlines()
+    f.close()
+    i = 0
+    while True:
+        if i == len(lines): break
+        spl_line1 = lines[i].split()
+        # spl_line2 = lines[i].split()
+        if spl_line1[1][-1] == '.':
+            spl_line1[1].replace('.', '')
+            lines[i] = spl_line1[0] + " " + spl_line1[1]  + " ".join(spl_line1[2:])
+            lines.insert(i + 1, ".         .         Fp      Fp  pos=punctuation|type=period                         - - - - - - -")
+            i += 1
+        i += 1
+    f = open(name, 'w')
+    f.write("\n".join(lines))
+    f.close
+
+
+
+
 def comp():
     f1 = open('salida.tag', 'r')
     f2 = open('test_files/new_esp_1.test', 'r')
+    lines1 = f1.readlines()
+    lines2 = f2.readlines()
+    f1.close()
+    f2.close()
+    i = 0
+    while True:
+        try:
+            spl_line1 = lines1[i].split()
+        except IndexError:
+            print "lines1 ", i
+            sys.exit()
+        try:
+            spl_line2 = lines2[i].split()
+        except IndexError:
+            print "lines2 ", i
+            sys.exit()
+        if spl_line1[1] != spl_line2[0]:
+            print "i = ", i
+            print ".tag => ", spl_line1[1]
+            print ".test => ", spl_line2[0]
+            r = raw_input("Enter something")
+        i += 1
 
 
 
 if __name__ == "__main__":
-    add_feature()
-    #bar("salida.tag")
+    #add_feature()
+    bar("salida.tag")
     foo("salida.tag")
+    #paar("salida.tag")
